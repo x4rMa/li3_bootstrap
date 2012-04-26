@@ -14,8 +14,9 @@ $this->title('Home');
 $self = $this;
 
 $notify = function($status, $message, $solution = null) {
-	$html  = "<div class=\"test-result test-result-{$status}\">{$message}</div>";
-	$html .= "<div class=\"test-result solution\">{$solution}</div>";
+	$html  = '<div class="alert alert-block alert-'.$status.'"><h4 class="alert-heading">'.$message.'</h4>';
+	$html .= '<div class="prettyprint">'.$solution.'</div>';
+    $html .= '</div>';
 	return $html;
 };
 
@@ -26,11 +27,11 @@ $support = function($classes) {
 		$name = substr($class, strrpos($class, '\\') + 1);
 		$url = 'http://lithify.me/docs/' . str_replace('\\', '/', $class);
 		$status = $enabled ? '&#x2714;' : '&#x2718;';
-		$enabled = $enabled ? ' enabled' : '';
+		$enabled = $enabled ? 'success' : 'danger';
 
-		$item = "<div class=\"indicator{$enabled}\">{$status}</div>";
-		$item .= "<a href=\"{$url}\">{$name}</a>";
-		$result .= "<p>{$item}</p>";
+		$item = '<a  href="'.$url.'" class="btn btn-'.$enabled.'">'.$status;
+		$item .= $name.'</a> ';
+		$result .= $item;
 	}
 	return $result;
 };
@@ -60,7 +61,7 @@ $checks = array(
 			return $notify('success', 'Database connection/s configured.');
 		}
 		return $notify(
-			'notice',
+			'info',
 			'No database connection defined.',
 			"To create a database connection:
 			<ol>
@@ -78,7 +79,7 @@ $checks = array(
 			return;
 		}
 		return $notify(
-			'fail',
+			'error',
 			'Magic quotes are enabled in your PHP configuration.',
 			'Please set <code>magic_quotes_gpc = Off</code> in your <code>php.ini</code> settings.'
 		);
@@ -88,7 +89,7 @@ $checks = array(
 			return;
 		}
 		return $notify(
-			'fail',
+			'error',
 			'Register globals is enabled in your PHP configuration.',
 			'Please set <code>register_globals = Off</code> in your <code>php.ini</code> settings.'
 		);
@@ -97,7 +98,7 @@ $checks = array(
 		$template = $self->html->link('template', 'http://lithify.me/docs/lithium/template');
 
 		return $notify(
-			'notice',
+			'info',
 			"You're using the application's default home page.",
 			"To change this {$template}, edit the file
 			<code>views/pages/home.html.php</code>.
@@ -110,7 +111,7 @@ $checks = array(
 		$routing = $self->html->link('routing', 'http://lithify.me/docs/lithium/net/http/Router');
 
 		return $notify(
-			'notice',
+			'info',
 			'Use custom routing.',
 			"To change the {$routing} edit the file <code>config/routes.php</code>."
 		);
@@ -121,7 +122,7 @@ $checks = array(
 		$ticket = $self->html->link('file a ticket', 'http://dev.lithify.me/lithium/tickets');
 
 		return $notify(
-			'notice',
+			'info',
 			'Run the tests.',
 			"Check the builtin {$dashboard} or {$tests} now to ensure Lithium
 			is working as expected. Do not hesitate to {$ticket} in case a test fails."
@@ -138,7 +139,7 @@ $checks = array(
 		$map = array_combine($list, array_map(function($c) { return $c::enabled(); }, $list));
 
 		return $notify(
-			'notice',
+			'info',
 			'Database support',
 			'<div class="test-result solution">' . $support($map) . '</div>'
 		);
@@ -149,7 +150,7 @@ $checks = array(
 		$map = array_combine($list, array_map(function($c) { return $c::enabled(); }, $list));
 
 		return $notify(
-			'notice',
+			'info',
 			'Cache support',
 			'<div class="test-result solution">' . $support($map) . '</div>'
 		);
@@ -158,24 +159,37 @@ $checks = array(
 
 ?>
 
-<h3>Getting Started</h3>
-<?php foreach ($checks as $check): ?>
-	<?php echo $check(); ?>
-<?php endforeach; ?>
 
-<h3>Additional Resources</h3>
-<ul class="additional-resources">
-	<li><?php echo $this->html->link('Documentation (Draft)', 'http://dev.lithify.me/drafts/source/en'); ?></li>
-	<li><?php echo $this->html->link('API Documentation', 'http://lithify.me/docs/lithium'); ?></li>
-	<li>
-		Development <?php echo $this->html->link('Wiki', 'http://dev.lithify.me/lithium/wiki'); ?>
-		and <?php echo $this->html->link('Timeline', 'http://dev.lithify.me/lithium/timeline'); ?>
-	</li>
-	<li>
-		<?php echo $this->html->link('#li3 general support', 'irc://irc.freenode.net/#li3'); ?>
-		and
-		<?php echo $this->html->link('#li3-core core discussion', 'irc://irc.freenode.net/#li3-core'); ?>
-		IRC channels
-		(<?php echo $this->html->link('logs', 'http://lithify.me/bot/logs'); ?>)
-	</li>
-</ul>
+<div class="hero-unit">
+    <h1>Welcome to your new App</h1>
+    <p>It's frech installed with some nice bootstrap flavour and some nifty libraries for you to get your app up and runnig fast!</p>
+</div>
+
+<div class="row-fluid">
+    <div class="span8">
+
+        <h2>Getting Started</h2>
+        <?php foreach ($checks as $check): ?>
+            <?php echo $check(); ?>
+        <?php endforeach; ?>
+    </div>
+
+    <div class="span4 well">
+        <h3>Additional Resources</h3>
+        <ul class="additional-resources">
+            <li><?php echo $this->html->link('Documentation (Draft)', 'http://dev.lithify.me/drafts/source/en'); ?></li>
+            <li><?php echo $this->html->link('API Documentation', 'http://lithify.me/docs/lithium'); ?></li>
+            <li>
+                Development <?php echo $this->html->link('Wiki', 'http://dev.lithify.me/lithium/wiki'); ?>
+                and <?php echo $this->html->link('Timeline', 'http://dev.lithify.me/lithium/timeline'); ?>
+            </li>
+            <li>
+                <?php echo $this->html->link('#li3 general support', 'irc://irc.freenode.net/#li3'); ?>
+                and
+                <?php echo $this->html->link('#li3-core core discussion', 'irc://irc.freenode.net/#li3-core'); ?>
+                IRC channels
+                (<?php echo $this->html->link('logs', 'http://lithify.me/bot/logs'); ?>)
+            </li>
+        </ul>
+    </div>
+</div>
