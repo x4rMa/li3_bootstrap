@@ -16,15 +16,27 @@
 <html>
 <head>
 	<?php echo $this->html->charset();?>
-	<title>Unhandled Exception > <?php echo $this->title(); ?></title>
+	<title>Unhandled Exception</title>
 	<?php echo $this->html->style(array('bootstrap')); ?>
 	<?php echo $this->scripts(); ?>
 	<?php echo $this->html->link('Icon', null, array('type' => 'icon')); ?>
 </head>
 <body>
-	<?php echo $this->_render('element', 'header'); ?>
     
-	<div class="container-fluid">
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <a class="brand" href="/">Error</a>
+          </div>
+        </div>
+    </div>    
+	
+    <div class="container-fluid">
         <div class="row-fluid">
             <div class="well">
                 <h1>An unhandled exception was thrown</h1>
@@ -49,7 +61,5 @@
 
     </div>
     
-    <?php echo $this->_render('element', 'footer'); ?>
-
 </body>
 </html>
