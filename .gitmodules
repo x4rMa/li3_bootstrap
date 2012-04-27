@@ -1,3 +1,21 @@
 [submodule "app/webroot/lib/bootstrap"]
 	path = app/webroot/lib/bootstrap
 	url = git@github.com:twitter/bootstrap
+[submodule "app/libraries/li3_docs"]
+	path = app/libraries/li3_docs
+	url = https://github.com/UnionOfRAD/li3_docs.git
+[submodule "app/libraries/lithium_qa"]
+	path = app/libraries/lithium_qa
+	url = https://github.com/UnionOfRAD/lithium_qa.git
+[submodule "app/libraries/li3_access"]
+	path = app/libraries/li3_access
+	url = https://github.com/tmaiaroto/li3_access.git
+[submodule "app/libraries/li3_paginate"]
+	path = app/libraries/li3_paginate
+	url = https://github.com/primetheus/li3_paginate.git
+[submodule "app/libraries/li3_flash_message"]
+	path = app/libraries/li3_flash_message
+	url = https://github.com/michaelhue/li3_flash_message.git
+[submodule "app/libraries/li3_searchable"]
+	path = app/libraries/li3_searchable
+	url = https://github.com/mackstar/li3_searchable.git
