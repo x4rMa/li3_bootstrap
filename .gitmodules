@@ -19,3 +19,6 @@
 [submodule "app/libraries/li3_searchable"]
 	path = app/libraries/li3_searchable
 	url = https://github.com/mackstar/li3_searchable.git
+[submodule "app/libraries/li3_neighbors"]
+	path = app/libraries/li3_neighbors
+	url = git://github.com/qwertzalcoatl/li3_neighbors.git

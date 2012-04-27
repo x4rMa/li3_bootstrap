@@ -192,4 +192,12 @@ $checks = array(
             </li>
         </ul>
     </div>
+    
+    <div class="span4 well">
+        <h3>Documentation</h3>
+        <ul class="additional-resources">
+            <li><?php echo $this->html->link('Documentation', '/docs'); ?></li>
+        </ul>
+    </div>
+
 </div>
