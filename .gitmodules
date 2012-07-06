@@ -4,9 +4,9 @@
 [submodule "app/libraries/li3_docs"]
 	path = app/libraries/li3_docs
 	url = https://github.com/UnionOfRAD/li3_docs.git
-[submodule "app/libraries/lithium_qa"]
-	path = app/libraries/lithium_qa
-	url = https://github.com/UnionOfRAD/lithium_qa.git
+[submodule "app/libraries/li3_qa"]
+	path = app/libraries/li3_qa
+	url = https://github.com/UnionOfRAD/li3_qa.git
 [submodule "app/libraries/li3_access"]
 	path = app/libraries/li3_access
 	url = https://github.com/tmaiaroto/li3_access.git
