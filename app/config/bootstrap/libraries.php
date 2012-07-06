@@ -127,6 +127,6 @@ Libraries::add('li3_docs');
 Libraries::add('li3_flash_message');
 Libraries::add('li3_paginate');
 Libraries::add('li3_searchable');
-Libraries::add('lithium_qa');
+Libraries::add('li3_qa');
 
 ?>
