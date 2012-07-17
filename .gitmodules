@@ -1,6 +1,6 @@
 [submodule "app/webroot/lib/bootstrap"]
 	path = app/webroot/lib/bootstrap
-	url = git@github.com:twitter/bootstrap
+	url = git@github.com:twitter/bootstrap.git
 [submodule "app/libraries/li3_docs"]
 	path = app/libraries/li3_docs
 	url = https://github.com/UnionOfRAD/li3_docs.git
